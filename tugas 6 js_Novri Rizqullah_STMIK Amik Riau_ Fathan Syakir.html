@@ -1,0 +1,63 @@
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script>
+	class Gempa{
+    constructor(no,lokasi,skala){
+        this.no = no;
+        this.lokasi = lokasi;
+        this.skala = skala;
+    }
+
+ getDampak(){
+        if(this.skala > 6 ) this.dampak_gempa = 'Bangunan Roboh dan Berpotensi Tsunami';
+        else if(this.skala > 4 && this.skala <= 6) this.dampak_gempa = 'Bangunan Roboh';
+        else if(this.skala > 2 && this.skala <= 4) this.dampak_gempa = 'Bangunan Retak2';
+        else if(this.skala <= 2) this.dampak_gempa = 'Tidak Terasa';
+        else this.dampak_gempa = '';
+
+        return this.dampak_gempa;
+    }
+
+    infoGempa(){
+        document.write(`
+        	<div class="container">
+        	<table class="table">
+    <thead>
+      <tr>
+        <th>No</th>
+        <th>Lokasi</th>
+        <th>Skala</th>
+        <th>Dampak</th>
+      </tr>
+    </thead>
+      <tbody>
+      <tr>
+  		<td>${this.no}</td>
+         <td>${this.lokasi}</td>
+         <td>${this.skala}</td>
+         <td>${this.getDampak()}</td> 
+  </tbody>
+  </table> 
+  </div> `);
+    }
+}
+    //-------membuat object-----
+g1 = new Gempa('1','Pekanbaru',5);
+g2 = new Gempa('2','Sumatra Barat',4);
+g3 = new Gempa('3','Aceh',7);
+g4 = new Gempa('4','Aceh',7);
+g5 = new Gempa('5','Palembang',2);
+g6 = new Gempa('6','Jambi',3);
+g7 = new Gempa('7','Papua',1);
+g8 = new Gempa('8','NTT',3);
+g9 = new Gempa('9','NTB',5);
+g10 = new Gempa('10','Kalimantan',5);
+
+g1.infoGempa(); g2.infoGempa(); g3.infoGempa(); g4.infoGempa(); g5.infoGempa(); g6.infoGempa(); g7.infoGempa(); g8.infoGempa(); g9.infoGempa(); g10.infoGempa();
+
+
+</script>
+
